@@ -1,19 +1,45 @@
 import React from 'react'
 import styles from './Main.module.css'
-import {MdOutlineCheckBoxOutlineBlank,MdOutlineCheckBox,MdDeleteForever} from 'react-icons/md'
+import Item from './Item'
 
 
-function Main() {
+function Main({filterType}) {
+
+
+const itemList = fetched.filter((v=> !v.isDeleted && v.type ===filterType ))
   return (
     <ul className={styles.container} >
-      <li className={styles.item}>
-        <MdOutlineCheckBoxOutlineBlank/>
-        <MdOutlineCheckBox/>
-        <div className={styles.text}>text</div>
-        <MdDeleteForever size={20}/>
-      </li>
+      {
+        itemList.map((v)=>
+          <Item item={v}/>
+        )
+      }
     </ul>
   )
 }
 
+
+const fetched = [
+  {
+    type:"doing",
+    content:"cleaning",
+    isDeleted:false
+  },
+  {
+    type:"done",
+    content:"cleaning",
+    isDeleted:false
+  },
+  {
+    type:"doing",
+    content:"jogging",
+    isDeleted:false
+  },
+  {
+    type:"doing",
+    content:"homework",
+    isDeleted:false
+  },
+
+]
 export default Main
