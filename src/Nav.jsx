@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import{MdLightMode,MdNightlight} from 'react-icons/md'
 import styles from './Nav.module.css'
+import { DarkModeContext } from './context/DarkModeContext'
 
-function Nav() {
+function Nav({handleFilter}) {
+  const {darkMode,toggleDarkMode}=useContext(DarkModeContext)
+
+
+
   return (
     <div className={styles.container}>
-      <div >
-        <MdLightMode/>
-        <MdNightlight/>
-      </div>
+      <button onClick={()=>toggleDarkMode()} >
+        {darkMode? <MdNightlight color="white"/>: <MdLightMode />}
+      </button>
       <ul className={styles.menu}>
-        <li>All</li>
-        <li>Doing</li>
-        <li>Done</li>
+       <li onClick={()=>handleFilter("all")}>
+       <button style={{color:darkMode&&"white"}}>
+        All
+       </button>
+        </li>
+        <li onClick={()=>handleFilter("doing")}>
+       <button style={{color:darkMode&&"white"}}>
+           Doing
+       </button>
+           </li>
+        <li onClick={()=>handleFilter("done")}>
+       <button style={{color:darkMode&&"white"}}>
+          Done
+       </button>
+          </li>
       </ul>
     </div>
   )

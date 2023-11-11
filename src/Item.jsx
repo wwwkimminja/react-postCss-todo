@@ -12,8 +12,8 @@ function Item({item}) {
     <li className={styles.item}>
     <div className={styles.text}>
     {isChecked?
-    <MdOutlineCheckBoxOutlineBlank />: 
-    <MdOutlineCheckBox/>
+    <MdOutlineCheckBox/>:
+    <MdOutlineCheckBoxOutlineBlank />
     }
       
       {content}</div>

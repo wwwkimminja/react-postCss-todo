@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import styles from './Main.module.css'
 import Item from './Item'
 
 
 function Main({filterType}) {
+  const itemList = useMemo(()=>{
+    if(filterType ==="all") {
+      return fetched.filter(item=>!item.isDeleted)
+    }else{
+      return fetched.filter(item=>!item.isDeleted && item.type === filterType)
+    }
 
+  },[filterType])
 
-const itemList = fetched.filter((v=> !v.isDeleted && v.type ===filterType ))
   return (
     <ul className={styles.container} >
       {
