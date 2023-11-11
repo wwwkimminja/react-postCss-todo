@@ -1,8 +1,17 @@
-.item{
+.container{
+  height: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.text{
-  text-align: center;
+.content{
+  margin-left: 5px;
 }
+.delete {
+  cursor: pointer;
+  transition: linear;
+}
+.delete:hover {
+  transform: scale(1.2);
+}
+

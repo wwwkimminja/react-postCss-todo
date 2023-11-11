@@ -1,11 +1,19 @@
 .container{
   display: flex;
+  bottom: 5px;
+}
+form {
+  height: 25px;
 }
 .input{
   flex-grow: 1;
+  border-radius: 16px 0 0 16px;
+  padding-left: 16px;
+
 
 }
 button[type="submit"]{
   border: 1px solid rgb(0, 0, 0);
   background-color: lightgray;
+  border-radius: 0 16px 16px 0;
 }

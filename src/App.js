@@ -16,7 +16,7 @@ function App() {
   const theme = darkMode ? { background: 'black', color: 'white' } : {}
   return (
     <div className={styles.container} style={theme}>
-      <Nav handleFilter={onChangeFilter} />
+      <Nav handleFilter={onChangeFilter} filterType={filterType} />
       <TodoListProvider>
         <Main filterType={filterType} />
         <Form />

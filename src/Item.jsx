@@ -7,15 +7,16 @@ function Item({item,handleDelete,handleCheck}) {
   const isChecked = item.state ==="done"
 
   return (
-    <li className={styles.item}>
-    <div className={styles.text} onClick={()=>handleCheck(item)}>
-    {isChecked?
-    <MdOutlineCheckBox/>:
-    <MdOutlineCheckBoxOutlineBlank />
-    }
-      
-      {item.content}</div>
-      <MdDeleteForever size={20} onClick={()=> handleDelete(item.id)}/>
+    <li className={styles.container}>
+      <div  onClick={()=>handleCheck(item)}>
+      {isChecked?
+      <MdOutlineCheckBox/>:
+      <MdOutlineCheckBoxOutlineBlank />
+      }
+        
+       <span className={styles.content}>{item.content}</span>
+      </div>
+      <MdDeleteForever size={20} onClick={()=> handleDelete(item.id)} className={styles.delete}/>
   </li>
   )
 }

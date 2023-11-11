@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useReducer } from 'react'
+import React, { useContext, useMemo } from 'react'
 import styles from './Main.module.css'
 import Item from './Item'
 import { TodoListContext } from './context/TodoListContext'

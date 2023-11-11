@@ -19,7 +19,7 @@ function Form() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
-      <input type="text" className={styles.input} value = {todo} onChange={handleChange}/>
+      <input type="text" className={styles.input} value = {todo} onChange={handleChange} placeholder='add todo'/>
       <button type='submit'>Save</button>
     </form>
   )
