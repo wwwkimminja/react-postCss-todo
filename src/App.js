@@ -3,7 +3,8 @@ import styles from './App.module.css'
 import Form from './Form';
 import Main from './Main';
 import Nav from './Nav';
-import { DarkModeContext, DarkModeProvider } from './context/DarkModeContext';
+import { DarkModeContext } from './context/DarkModeContext';
+import { TodoListProvider } from './context/TodoListContext';
 function App() {
   const [filterType, setFilterType] = useState("doing")
   const { darkMode } = useContext(DarkModeContext)
@@ -16,8 +17,10 @@ function App() {
   return (
     <div className={styles.container} style={theme}>
       <Nav handleFilter={onChangeFilter} />
-      <Main filterType={filterType} />
-      <Form />
+      <TodoListProvider>
+        <Main filterType={filterType} />
+        <Form />
+      </TodoListProvider>
     </div>
   );
 }

@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './Form.module.css'
+import { TodoListContext } from './context/TodoListContext';
 
 function Form() {
+  const [todo,setTodo]= useState('');
+
+
+ const {handleAdd} = useContext(TodoListContext)
+ const handleSubmit = (e)=>{
+  e.preventDefault()
+  handleAdd(todo)
+  return setTodo('')
+ }
+ const handleChange = (e)=>{
+  setTodo(e.target.value)
+ }
+ 
+
   return (
-    <form onSubmit={()=>{console.log("save")}} className={styles.container}>
-      <input type="text" className={styles.input}/>
+    <form onSubmit={handleSubmit} className={styles.container}>
+      <input type="text" className={styles.input} value = {todo} onChange={handleChange}/>
       <button type='submit'>Save</button>
     </form>
   )

@@ -15,8 +15,8 @@ export function TodoListProvider({children }) {
     const state = item.state === "doing"?"done":"doing"
     dispatch({type:"updated",id:item.id, state})
   }
-  const handleAdd = (item)=>{
-    dispatch({type:"added",item})
+  const handleAdd = (content)=>{
+    dispatch({type:"added",content})
   }
 
   return (
