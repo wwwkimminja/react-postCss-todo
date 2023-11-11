@@ -5,6 +5,7 @@ import {MdOutlineCheckBoxOutlineBlank,MdOutlineCheckBox,MdDeleteForever} from 'r
 
 function Item({item,handleDelete,handleCheck}) {
   const isChecked = item.state ==="done"
+  const textDecorationLine = isChecked ? "line-through" :"none"
 
   return (
     <li className={styles.container}>
@@ -14,7 +15,7 @@ function Item({item,handleDelete,handleCheck}) {
       <MdOutlineCheckBoxOutlineBlank />
       }
         
-       <span className={styles.content}>{item.content}</span>
+       <span className={styles.content} style={{textDecorationLine}}>{item.content}</span>
       </div>
       <MdDeleteForever size={20} onClick={()=> handleDelete(item.id)} className={styles.delete}/>
   </li>
