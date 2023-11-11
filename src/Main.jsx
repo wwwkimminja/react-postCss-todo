@@ -1,19 +1,11 @@
-import React, { useMemo, useReducer } from 'react'
+import React, { useContext, useMemo, useReducer } from 'react'
 import styles from './Main.module.css'
 import Item from './Item'
-import { todoReducer } from './reducer/todo-reducer'
+import { TodoListContext } from './context/TodoListContext'
 
 
 function Main({filterType}) {
-  const [todoList,dispatch]=useReducer(todoReducer,fetched)
-
-  const handleDelete = (id)=>{
-    dispatch({type:'deleted',id})
-  }
-  const handleType = (item)=>{
-    const state = item.state === "doing"?"done":"doing"
-    dispatch({type:"updated",id:item.id, state})
-  }
+  const {todoList,handleDelete,handleState} = useContext(TodoListContext)
 
 
   const itemList = useMemo(()=>{
@@ -29,35 +21,11 @@ function Main({filterType}) {
     <ul className={styles.container} >
       {
         itemList.map((v)=>
-          <Item  key={v.id} item={v} handleDelete={handleDelete} handleCheck={handleType}/>
+          <Item  key={v.id} item={v} handleDelete={handleDelete} handleCheck={handleState}/>
         )
       }
     </ul>
   )
 }
 
-
-const fetched = [
-  {
-    id:"1",
-    state:"doing",
-    content:"cleaning",
-  },
-  {
-    id:"2",
-    state:"done",
-    content:"cleaning",
-  },
-  {
-    id:"3",
-    state:"doing",
-    content:"jogging",
-  },
-  {
-    id:"4",
-    state:"doing",
-    content:"homework",
-  },
-
-]
 export default Main
