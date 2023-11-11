@@ -1,23 +1,35 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useReducer } from 'react'
 import styles from './Main.module.css'
 import Item from './Item'
+import { todoReducer } from './reducer/todo-reducer'
 
 
 function Main({filterType}) {
+  const [todoList,dispatch]=useReducer(todoReducer,fetched)
+
+  const handleDelete = (id)=>{
+    dispatch({type:'deleted',id})
+  }
+  const handleType = (item)=>{
+    const state = item.state === "doing"?"done":"doing"
+    dispatch({type:"updated",id:item.id, state})
+  }
+
+
   const itemList = useMemo(()=>{
     if(filterType ==="all") {
-      return fetched.filter(item=>!item.isDeleted)
-    }else{
-      return fetched.filter(item=>!item.isDeleted && item.type === filterType)
+      return todoList
     }
+    return todoList.filter(item=>item.state === filterType)
+    
 
-  },[filterType])
+  },[filterType,todoList])
 
   return (
     <ul className={styles.container} >
       {
         itemList.map((v)=>
-          <Item item={v}/>
+          <Item  key={v.id} item={v} handleDelete={handleDelete} handleCheck={handleType}/>
         )
       }
     </ul>
@@ -27,24 +39,24 @@ function Main({filterType}) {
 
 const fetched = [
   {
-    type:"doing",
+    id:"1",
+    state:"doing",
     content:"cleaning",
-    isDeleted:false
   },
   {
-    type:"done",
+    id:"2",
+    state:"done",
     content:"cleaning",
-    isDeleted:false
   },
   {
-    type:"doing",
+    id:"3",
+    state:"doing",
     content:"jogging",
-    isDeleted:false
   },
   {
-    type:"doing",
+    id:"4",
+    state:"doing",
     content:"homework",
-    isDeleted:false
   },
 
 ]

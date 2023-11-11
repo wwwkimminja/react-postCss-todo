@@ -3,23 +3,20 @@ import styles from './Item.module.css'
 import {MdOutlineCheckBoxOutlineBlank,MdOutlineCheckBox,MdDeleteForever} from 'react-icons/md'
 
 
-function Item({item}) {
-  const {type,content}=item
-  const isChecked = type ==="done"
-
+function Item({item,handleDelete,handleCheck}) {
+  const isChecked = item.state ==="done"
 
   return (
     <li className={styles.item}>
-    <div className={styles.text}>
+    <div className={styles.text} onClick={()=>handleCheck(item)}>
     {isChecked?
     <MdOutlineCheckBox/>:
     <MdOutlineCheckBoxOutlineBlank />
     }
       
-      {content}</div>
-    <MdDeleteForever size={20}/>
+      {item.content}</div>
+      <MdDeleteForever size={20} onClick={()=> handleDelete(item.id)}/>
   </li>
   )
 }
-
 export default Item
