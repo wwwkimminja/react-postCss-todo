@@ -6,7 +6,7 @@ import Nav from './Nav';
 import { DarkModeContext } from './context/DarkModeContext';
 import { TodoListProvider } from './context/TodoListContext';
 function App() {
-  const [filterType, setFilterType] = useState("doing")
+  const [filterType, setFilterType] = useState("all")
   const { darkMode } = useContext(DarkModeContext)
 
   const onChangeFilter = (filterType) => {

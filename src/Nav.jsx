@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import{MdLightMode,MdNightlight} from 'react-icons/md'
+import{ MdLightMode,MdNightlight} from 'react-icons/md'
 import styles from './Nav.module.css'
 import { DarkModeContext } from './context/DarkModeContext'
 
@@ -20,7 +20,7 @@ function Nav({handleFilter,filterType}) {
        { ["all","doing","done"].map((filter)=>{
         const fontWeight = filter === filterType?"bold":"normal"
         return (
-          <li onClick={handleClick} >
+          <li onClick={handleClick} key={filter} >
           <button style={{color:darkMode&&"white", fontWeight}} >
            {filter.toUpperCase()}
           </button>
