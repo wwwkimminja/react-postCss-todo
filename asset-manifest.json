@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-postCss-todo/static/css/main.07c697e8.css",
+    "main.js": "/react-postCss-todo/static/js/main.3d433c3a.js",
+    "index.html": "/react-postCss-todo/index.html",
+    "main.07c697e8.css.map": "/react-postCss-todo/static/css/main.07c697e8.css.map",
+    "main.3d433c3a.js.map": "/react-postCss-todo/static/js/main.3d433c3a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.07c697e8.css",
+    "static/js/main.3d433c3a.js"
+  ]
+}
