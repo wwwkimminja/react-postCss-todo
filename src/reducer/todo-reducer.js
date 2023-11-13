@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid'
 export function todoReducer(items, action) {
   switch (action.type) {
     case 'updated': {
@@ -13,9 +14,8 @@ export function todoReducer(items, action) {
     }
     case 'added': {
       const { content } = action;
-      const id = items.length + 1
       return [...items, {
-        id: +id,
+        id: uuidv4(),
         state: "doing",
         content,
       }]
