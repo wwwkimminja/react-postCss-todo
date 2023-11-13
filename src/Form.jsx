@@ -9,6 +9,9 @@ function Form() {
  const {handleAdd} = useContext(TodoListContext)
  const handleSubmit = (e)=>{
   e.preventDefault()
+  if(todo.trim().length === 0){
+    return;
+  }
   handleAdd(todo)
   return setTodo('')
  }
