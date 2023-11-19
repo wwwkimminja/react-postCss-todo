@@ -3,13 +3,9 @@ import{ MdLightMode,MdNightlight} from 'react-icons/md'
 import styles from './Nav.module.css'
 import { DarkModeContext } from './context/DarkModeContext'
 
-function Nav({handleFilter,filterType}) {
+function Nav({filters,handleFilter,filterType}) {
   const {darkMode,toggleDarkMode}=useContext(DarkModeContext)
   
-  
-  const handleClick =(e)=>{
-    handleFilter(e.target.innerHTML.toLowerCase())
-  }
 
   return (
     <div className={styles.container}>
@@ -17,11 +13,11 @@ function Nav({handleFilter,filterType}) {
         {darkMode? <MdNightlight color="white"/>: <MdLightMode />}
       </button>
       <ul className={styles.menu}>
-       { ["all","doing","done"].map((filter)=>{
+       { filters.map((filter)=>{
         const fontWeight = filter === filterType?"bold":"normal"
         return (
-          <li onClick={handleClick} key={filter} >
-          <button style={{color:darkMode&&"white", fontWeight}} >
+          <li  key={filter} >
+          <button onClick={()=>handleFilter(filter)} style={{color:darkMode&&"white", fontWeight}} >
            {filter.toUpperCase()}
           </button>
            </li>
