@@ -1,16 +1,15 @@
-import React, { useContext } from 'react'
-import{ MdLightMode,MdNightlight} from 'react-icons/md'
+import React from 'react'
+import{ HiSun,HiMoon} from 'react-icons/hi'
 import styles from './Nav.module.css'
-import { DarkModeContext } from './context/DarkModeContext'
+import { useDarkMode } from './context/DarkModeContext'
 
 function Nav({filters,handleFilter,filterType}) {
-  const {darkMode,toggleDarkMode}=useContext(DarkModeContext)
-  
+  const {darkMode,toggleDarkMode}=useDarkMode()
 
   return (
-    <div className={styles.container}>
-      <button onClick={()=>toggleDarkMode()} >
-        {darkMode? <MdNightlight color="white"/>: <MdLightMode />}
+    <header className={styles.container}>
+      <button className={styles.toggle} onClick={toggleDarkMode} >
+        {darkMode? <HiMoon />: <HiSun />}
       </button>
       <ul className={styles.filters}>
        { filters.map((filter)=>{
@@ -23,7 +22,7 @@ function Nav({filters,handleFilter,filterType}) {
         )
        })}
       </ul>
-    </div>
+    </header>
   )
 }
 
