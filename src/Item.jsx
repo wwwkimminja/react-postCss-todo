@@ -15,8 +15,8 @@ function Item({item,onDelete,onUpdate}) {
 
   return (
     <li className={styles.todo}>
-      <input type="checkbox" id="checkbox" checked={isChecked} onChange={handleChange}className={styles.checkbox}/>
-      <label htmlFor='checkbox' className={styles.text}>{item.content}</label>
+      <input type="checkbox" id={item.id} checked={isChecked} onChange={handleChange}className={styles.checkbox}/>
+      <label htmlFor={item.id} className={styles.text}>{item.content}</label>
       <span className={styles.icon}>
         <button  className={styles.button} onClick={()=> onDelete(item.id)}>
           <FaTrashAlt/>

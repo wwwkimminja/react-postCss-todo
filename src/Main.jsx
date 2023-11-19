@@ -8,13 +8,13 @@ import Form from './Form'
 function Main({filterType}) {
   const {todoList,handleDelete,handleState,handleAdd} = useContext(TodoListContext)
 
-  const filterd = getFilteredItem(todoList,filterType)
+  const filtered = getFilteredItem(todoList,filterType)
 
   return (
     <section className={styles.container}>
     <ul className={styles.list}>
       {
-        filterd.map((v)=>
+        filtered.map((v)=>
         <Item  key={v.id} item={v} onDelete={handleDelete} onUpdate={handleState}/>
         )
       }
