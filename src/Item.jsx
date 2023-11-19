@@ -1,23 +1,27 @@
 import React from 'react'
 import styles from './Item.module.css'
-import {MdOutlineCheckBoxOutlineBlank,MdOutlineCheckBox,MdDeleteForever} from 'react-icons/md'
+import {FaTrashAlt} from 'react-icons/fa'
 
 
-function Item({item,handleDelete,handleCheck}) {
+function Item({item,onDelete,onUpdate}) {
   const isChecked = item.state ==="done"
-  const textDecorationLine = isChecked ? "line-through" :"none"
+
+  const handleChange =(e)=>{
+    const status = e.target.checked?'done':'doing'
+    onUpdate({...item,status})
+
+  }
+
 
   return (
-    <li className={styles.container}>
-      <div  onClick={()=>handleCheck(item)}>
-      {isChecked?
-      <MdOutlineCheckBox/>:
-      <MdOutlineCheckBoxOutlineBlank />
-      }
-        
-       <span className={styles.content} style={{textDecorationLine}}>{item.content}</span>
-      </div>
-      <MdDeleteForever size={20} onClick={()=> handleDelete(item.id)} className={styles.delete}/>
+    <li className={styles.todo}>
+      <input type="checkbox" id="checkbox" checked={isChecked} onChange={handleChange}className={styles.checkbox}/>
+      <label htmlFor='checkbox' className={styles.text}>{item.content}</label>
+      <span className={styles.icon}>
+        <button  className={styles.button} onClick={()=> onDelete(item.id)}>
+          <FaTrashAlt/>
+        </button>
+      </span>
   </li>
   )
 }

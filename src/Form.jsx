@@ -1,18 +1,16 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './Form.module.css'
-import { TodoListContext } from './context/TodoListContext';
 
-function Form() {
+function Form({onAdd}) {
   const [todo,setTodo]= useState('');
 
 
- const {handleAdd} = useContext(TodoListContext)
  const handleSubmit = (e)=>{
   e.preventDefault()
   if(todo.trim().length === 0){
     return;
   }
-  handleAdd(todo)
+  onAdd(todo)
   return setTodo('')
  }
  const handleChange = (e)=>{
@@ -21,9 +19,9 @@ function Form() {
  
 
   return (
-    <form onSubmit={handleSubmit} className={styles.container}>
-      <input type="text" className={styles.input} value = {todo} onChange={handleChange} placeholder='add todo'/>
-      <button type='submit'>Save</button>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <input type="text"  className={styles.input} value = {todo} onChange={handleChange} placeholder='add todo'/>
+      <button type='submit' className={styles.button}>Save</button>
     </form>
   )
 }
