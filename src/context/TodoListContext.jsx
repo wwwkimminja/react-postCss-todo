@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer, useState } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { todoReducer } from "../reducer/todo-reducer";
 
 export const TodoListContext = createContext();
@@ -32,26 +32,3 @@ export function TodoListProvider({children }) {
 
 }
 
-const fetched = [
-  {
-    id:"1",
-    state:"doing",
-    content:"cleaning",
-  },
-  {
-    id:"2",
-    state:"done",
-    content:"cleaning",
-  },
-  {
-    id:"3",
-    state:"doing",
-    content:"jogging",
-  },
-  {
-    id:"4",
-    state:"doing",
-    content:"homework",
-  },
-
-]
