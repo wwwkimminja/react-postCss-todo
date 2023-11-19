@@ -12,13 +12,12 @@ function Nav({filters,handleFilter,filterType}) {
       <button onClick={()=>toggleDarkMode()} >
         {darkMode? <MdNightlight color="white"/>: <MdLightMode />}
       </button>
-      <ul className={styles.menu}>
+      <ul className={styles.filters}>
        { filters.map((filter)=>{
-        const fontWeight = filter === filterType?"bold":"normal"
         return (
           <li  key={filter} >
-          <button onClick={()=>handleFilter(filter)} style={{color:darkMode&&"white", fontWeight}} >
-           {filter.toUpperCase()}
+          <button className={`${styles.filter} ${filter === filterType && styles.selected}`} onClick={()=>handleFilter(filter)}  >
+           {filter}
           </button>
            </li>
         )
